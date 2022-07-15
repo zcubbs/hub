@@ -6,12 +6,6 @@ groups:
         links:
           - caption: Test/Link
             link: "https://google.com"
-  - caption: "Group 2"
-    tags:
-      - caption: Test/tag 1
-        links:
-          - caption: Test/Link
-            link: "https://google.com"
 
           - caption: Test Link
             link: "https://google.com"
@@ -39,5 +33,11 @@ groups:
             link: "https://google.com"
 
           - caption: Test Link 5
+            link: "https://google.com"
+  - caption: "Group 2"
+    tags:
+      - caption: Test/tag 1
+        links:
+          - caption: Test/Link
             link: "https://google.com"
 
