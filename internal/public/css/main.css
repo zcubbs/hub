@@ -1,0 +1,209 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    background-color: #f6f8fa;
+    color: #24292e;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+div {
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: auto !important;
+    max-width: 1012px !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 1012px) {
+    .container {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+.container-section {
+    margin-bottom: 32px !important;
+}
+
+.disclaimer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: normal;
+    width: 100%;
+    margin-bottom: 35px;
+    margin-top: 30px;
+    width: auto !important;
+    max-width: 1012px !important;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+}
+
+.top-nav {
+    overflow-wrap: break-word;
+    /*margin: 0 0 70px;*/
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    color: #24292e;
+
+    padding: 16px 24px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background-color: #fff !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 1px 15px rgb(27 31 35 / 15%) !important;
+}
+
+.nav-items {
+    margin: 0;
+    padding: 0 0 5px;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.nav-items .title {
+    font-size: 1.1em;
+    margin-right: 35px;
+    cursor: pointer;
+}
+
+.nav-items .title .logo {
+    top: 5px;
+    height: 25px;
+    position: relative;
+    margin-right: 10px;
+}
+
+.nav-items a {
+    font-size: 16px;
+    text-align: left;
+    overflow-wrap: break-word;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.repo-link {
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .top-nav {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex !important;
+        text-align: left !important;
+    }
+}
+
+.sub-header .bullet {
+    height: 20px;
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
+}
+
+.sub-header {
+    display: block;
+    margin-bottom: 18px;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 2.3625rem;
+    border-top: 2px solid #eee;
+    padding-top: 20px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: normal;
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+.flex-item {
+    width: 100%;
+    height: 75px;
+    margin-bottom: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 5%);
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    display: flex;
+    align-items: center;
+    padding: 25px;
+}
+
+.flex-item .icon {
+    margin-right: 10px;
+}
+
+.flex-item .caption {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+@media (min-width: 400px) {
+    .flex-item {
+        width: 100%;
+    }
+}
+
+@media (min-width: 600px) {
+    .flex-item {
+        width: 30%;
+    }
+}
+
+.home-btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f1f1f1;
+    color: black;
+    margin-bottom: 35px;
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 60px;
+}
+
+.home-btn:hover {
+    background-color: #ddd;
+    color: black;
+}
