@@ -14,7 +14,7 @@
                 {{.Caption}}
             </div>
             <div class="flex-container">
-                {{range .Tags}}
+                {{range .Links}}
                 <div onclick="goTo('/tag/{{$groupCaption | urlquery  }}/{{.Caption | urlquery  }}')" class="flex-item">
                     <span class="icon" >🔵</span>
                     <span class="caption">{{.Caption}}</span>
