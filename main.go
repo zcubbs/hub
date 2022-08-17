@@ -29,6 +29,7 @@ func main() {
 	configs.Bootstrap()
 
 	groups := configs.Config.Groups
+	links := configs.Config.Links
 	title := configs.Config.App.Title
 	disclaimer := configs.Config.App.Disclaimer
 	customHTML := configs.Config.App.CustomHtml
@@ -58,7 +59,7 @@ func main() {
 	engine.Reload(devMode)
 
 	app.Get("/", func(c *fiber.Ctx) error {
-		return c.Render("index", fiber.Map{
+		return c.Render("group", fiber.Map{
 			"Title":      title,
 			"SubTitle":   subTitle,
 			"Logo":       logo,
@@ -66,45 +67,57 @@ func main() {
 			"ShowGithub": showGithub,
 			"CustomHtml": template.HTML(customHTML),
 			"Groups":     groups,
+			"Links":      links,
+			"IsSubGroup": false,
 		})
 	})
 
-	app.Get("/tag/:group/:caption", func(c *fiber.Ctx) error {
-		groupCaption, err := url.QueryUnescape(c.Params("group"))
+	app.Get("/group/:groupId/:subGroupId", func(c *fiber.Ctx) error {
+		groupId, err := url.QueryUnescape(c.Params("groupId"))
 		if err != nil {
 			log.Println(err)
 		}
-		tagCaption, err := url.QueryUnescape(c.Params("caption"))
+		subGroupId, err := url.QueryUnescape(c.Params("subGroupId"))
 		if err != nil {
 			log.Println(err)
 		}
 
-		log.Println(groupCaption, tagCaption)
-		fmt.Println(groups)
-		//for _, group := range *groups {
-		//	if group.Caption == groupCaption {
-		//		for _, tag := range *group.Tags {
-		//			if tag.Caption == tagCaption {
-		//				return c.Render("tag", fiber.Map{
-		//					"Title":        title,
-		//					"SubTitle":     subTitle,
-		//					"Logo":         logo,
-		//					"Tag":          tag,
-		//					"GroupCaption": groupCaption,
-		//				})
-		//			}
-		//		}
-		//	}
-		//}
+		groupCaption := ""
+		subGroupCaption := ""
 
-		return c.Render("index", fiber.Map{
+		for _, group := range *groups {
+			if group.Id == groupId {
+				groupCaption = group.Caption
+			}
+			if group.Id == subGroupId {
+				subGroupCaption = group.Caption
+			}
+		}
+
+		for _, group := range *groups {
+			if group.Id == subGroupId {
+				return c.Render("group", fiber.Map{
+					"Title":           title,
+					"SubTitle":        subTitle,
+					"Logo":            logo,
+					"Links":           group.Links,
+					"GroupCaption":    groupCaption,
+					"SubGroupCaption": subGroupCaption,
+					"IsSubGroup":      true,
+				})
+			}
+		}
+
+		return c.Render("group", fiber.Map{
 			"Title":      title,
 			"SubTitle":   subTitle,
 			"Logo":       logo,
 			"Disclaimer": disclaimer,
 			"ShowGithub": showGithub,
 			"CustomHtml": template.HTML(customHTML),
-			"Tags":       groups,
+			"Groups":     groups,
+			"Links":      links,
+			"IsSubGroup": false,
 		})
 
 	})
