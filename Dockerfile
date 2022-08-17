@@ -29,4 +29,4 @@ WORKDIR /app
 EXPOSE 8000
 
 # Command to run when starting the container.
-ENTRYPOINT ["./hub"]
+ENTRYPOINT ["./app"]
