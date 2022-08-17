@@ -21,8 +21,8 @@ RUN mkdir app
 # Copy binary and config files from /build to root folder of scratch container.
 #COPY --from=builder ["/build/apiserver", "/build/.env", "/"]
 COPY --from=builder ["/build/hub", "/app"]
-COPY --from=builder ["/build/views", "/app/views"]
-COPY --from=builder ["/build/public", "/app/public"]
+COPY --from=builder ["/build/internal/views", "/app/internal/views"]
+COPY --from=builder ["/build/internal/public", "/app/internal/public"]
 
 # Export necessary port.
 WORKDIR /app
