@@ -1,43 +1,86 @@
 ---
+links:
+  - caption: Docs
+    url: "https://google.com"
+    icon: "ph-book-bookmark"
+  - caption: Blog
+    url: "https://google.com"
+    icon: "ph-coffee"
+  - caption: Pulse
+    url: "https://google.com"
+    icon: "ph-heartbeat"
 groups:
   - caption: "Group 1"
-    tags:
-      - caption: Test/tag 1
-        links:
-          - caption: Test/Link
-            link: "https://google.com"
+    id: "group-1"
+    links:
+      - caption: Group 2
+        url: "group-2"
+        newTab: false
+        external: false
 
-          - caption: Test Link
-            link: "https://google.com"
+      - caption: Test Link
+        url: "https://google.com"
+        external: true
+        newTab: true
 
-          - caption: Test Link
-            link: "https://google.com"
+      - caption: Test Link
+        url: "https://google.com"
+        newTab: false
+        external: true
 
-          - caption: Test Link
-            link: "https://google.com"
-      - caption: Test tag 2
-      - caption: Test tag 3
-      - caption: Test tag 4
-      - caption: Test tag 5
-        links:
-          - caption: Test Link 1
-            link: "https://google.com"
+      - caption: Test Link
+        url: "https://google.com"
+        newTab: false
+        external: true
 
-          - caption: Test Link 2
-            link: "https://google.com"
-
-          - caption: Test Link 3
-            link: "https://google.com"
-
-          - caption: Test Link 4
-            link: "https://google.com"
-
-          - caption: Test Link 5
-            link: "https://google.com"
+      - caption: Test Link
+        url: "https://google.com"
+        newTab: false
+        external: true
   - caption: "Group 2"
-    tags:
+    hidden: true
+    id: "group-2"
+    links:
       - caption: Test/tag 1
-        links:
-          - caption: Test/Link
-            link: "https://google.com"
+        url: "https://google.com"
+        newTab: true
+        external: true
+
+      - caption: Test Link
+        url: "https://google.com"
+        newTab: true
+        external: true
+
+      - caption: Test Link
+        url: "https://google.com"
+        newTab: true
+        external: true
+  - caption: "Group 3"
+    hidden: false
+    id: "group-3"
+    links:
+      - caption: Test/tag 1
+        url: "https://google.com"
+        newTab: false
+        external: false
+
+      - caption: Test Link
+        url: "https://google.com"
+        newTab: false
+        external: false
+
+      - caption: Test Link
+        url: "https://google.com"
+        newTab: false
+        external: false
+
+      - caption: Test Link
+        url: "https://google.com"
+        newTab: false
+        external: false
+
+      - caption: Test Link
+        url: "https://google.com"
+        newTab: false
+        external: false
 

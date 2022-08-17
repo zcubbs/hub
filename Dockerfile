@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM golang:1.16-alpine AS builder
+FROM --platform=$BUILDPLATFORM golang:1.18-alpine AS builder
 
 # Move to working directory (/build).
 WORKDIR /build
@@ -21,12 +21,12 @@ RUN mkdir app
 # Copy binary and config files from /build to root folder of scratch container.
 #COPY --from=builder ["/build/apiserver", "/build/.env", "/"]
 COPY --from=builder ["/build/hub", "/app"]
-COPY --from=builder ["/build/views", "/app/views"]
-COPY --from=builder ["/build/public", "/app/public"]
+COPY --from=builder ["/build/internal/views", "/app/internal/views"]
+COPY --from=builder ["/build/internal/public", "/app/internal/public"]
 
 # Export necessary port.
 WORKDIR /app
 EXPOSE 8000
 
 # Command to run when starting the container.
-ENTRYPOINT ["./hub"]
+ENTRYPOINT ["./app"]

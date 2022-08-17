@@ -1,0 +1,95 @@
+{{template "partials/header" .}}
+
+{{if not .IsSubGroup}}
+<div class="disclaimer">
+    {{.Disclaimer}}
+    {{.CustomHtml}}
+</div>
+{{end}}
+<ul>
+    <div class="container">
+        {{if not .IsSubGroup}}
+        <div class="sub-header"></div>
+        <div class="container-section">
+            {{range .Links}}
+            <a href="{{.URL}}" target="_blank" class="main-link">
+                <em class="{{.Icon}} icon" style="color: gray"></em>
+                {{.Caption}}
+            </a>
+            {{end}}
+        </div>
+        {{end}}
+        <div class="container-section">
+            {{if .IsSubGroup}}
+                <a class="home-btn" onclick="goTo('/')">
+                    <em class="ph-arrow-left icon"></em>
+                    Go Back
+                </a>
+                <div class="sub-header">
+                    <em class="ph-folder-star icon"></em>
+                    {{.GroupCaption}} > {{.SubGroupCaption}}
+                </div>
+                <div class="flex-container">
+                    {{$groupCaption := .Caption}}
+                    {{$groupId := .Id}}
+                    {{range .Links}}
+                        {{if .External}}
+                            {{if .NewTab}}
+                                <div onclick="goToNewTab('{{.URL }}')" class="flex-item">
+                                    <em class="ph-paper-plane-tilt icon"></em>
+                                    <span class="caption">{{.Caption}}</span>
+                                </div>
+                            {{else}}
+                                <div onclick="goTo('{{.URL }}')" class="flex-item">
+                                    <em class="ph-paper-plane-tilt icon"></em>
+                                    <span class="caption">{{.Caption}}</span>
+                                </div>
+                            {{end}}
+                        {{ else if not .External }}
+                            <div onclick="goTo('/group/{{$groupId | urlquery  }}/{{.URL | urlquery  }}')" class="flex-item">
+                                <em class="ph-folder-star icon"></em>
+                                <span class="caption">{{.Caption}}</span>
+                            </div>
+                        {{ end }}
+                    {{end}}
+                </div>
+            {{else}}
+                {{range .Groups}}
+                    {{if not .Hidden}}
+                    {{$groupCaption := .Caption}}
+                    {{$groupId := .Id}}
+                    <div class="sub-header">
+                        <em class="ph-cube icon"></em>
+                        {{.Caption}}
+                    </div>
+
+                    <div class="flex-container">
+                        {{range .Links}}
+                            {{if .External}}
+                                {{if .NewTab}}
+                                    <div onclick="goToNewTab('{{.URL }}')" class="flex-item">
+                                        <em class="ph-paper-plane-tilt icon"></em>
+                                        <span class="caption">{{.Caption}}</span>
+                                    </div>
+                                {{else}}
+                                    <div onclick="goTo('{{.URL }}')" class="flex-item">
+                                        <em class="ph-paper-plane-tilt icon"></em>
+                                        <span class="caption">{{.Caption}}</span>
+                                    </div>
+                                {{end}}
+                            {{ else if not .External }}
+                                <div onclick="goTo('/group/{{$groupId | urlquery  }}/{{.URL | urlquery  }}')" class="flex-item">
+                                    <em class="ph-folder-star icon"></em>
+                                    <span class="caption">{{.Caption}}</span>
+                                </div>
+                            {{ end }}
+                        {{end}}
+                    </div>
+                    {{end}}
+                {{end}}
+            {{end}}
+        </div>
+    </div>
+</ul>
+
+{{template "partials/footer" .}}
