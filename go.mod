@@ -7,7 +7,6 @@ require (
 	github.com/gofiber/template v1.6.28
 	github.com/joho/godotenv v1.4.0
 	github.com/spf13/viper v1.10.0
-	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
@@ -29,4 +28,5 @@ require (
 	golang.org/x/sys v0.0.0-20220227234510-4e6760a101f9 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/ini.v1 v1.66.2 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
