@@ -27,8 +27,8 @@ func main() {
 	//Bootstrap configs
 	configs.Bootstrap()
 
-	groups := configs.Config.Groups
-	links := configs.Config.Links
+	groups := configs.Config.Data.Groups
+	links := configs.Config.Data.Links
 	title := configs.Config.App.Title
 	disclaimer := configs.Config.App.Disclaimer
 	customHTML := configs.Config.App.CustomHtml
