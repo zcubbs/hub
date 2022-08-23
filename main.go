@@ -73,7 +73,6 @@ func main() {
 			"CustomHtml": template.HTML(customHTML),
 			"Groups":     groups,
 			"Links":      links,
-			"IsSubGroup": false,
 		})
 	})
 
