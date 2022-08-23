@@ -37,8 +37,8 @@ var (
 		"app.showGithub",
 		"app.logoUrl",
 		"app.disclaimer",
+		"app.debug",
 		"dev.mode",
-		"dev.debug",
 		"server.tz",
 		"server.secure",
 		"server.port",
@@ -97,7 +97,7 @@ func Bootstrap() {
 	//debugConfig()
 }
 
-func debugConfig() {
+func DebugConfig() {
 	jsonConfig, err := json.MarshalIndent(&Config, "", "  ")
 	if err != nil {
 		fmt.Println(err)

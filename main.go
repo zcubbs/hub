@@ -39,7 +39,7 @@ func main() {
 	debugMode := configs.Config.App.Debug
 
 	if debugMode {
-		fmt.Println(configs.Config)
+		configs.DebugConfig()
 	}
 
 	engine := html.New("./internal/views", ".html")

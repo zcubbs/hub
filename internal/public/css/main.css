@@ -193,7 +193,7 @@ div {
     border-top: 2px solid #eee;
     padding-top: 20px;
 }
-.sub-header .thick-line{
+.sub-header.thick-line{
     border-width: 10px;
 }
 
