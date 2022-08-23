@@ -11,76 +11,84 @@ links:
     icon: "ph-heartbeat"
 groups:
   - caption: "Group 1"
-    id: "group-1"
     links:
-      - caption: Group 2
-        url: "group-2"
-        newTab: false
-        external: false
-
-      - caption: Test Link
+      - caption: "Link 1"
         url: "https://google.com"
-        external: true
+        icon: "ph-book-bookmark"
         newTab: true
-
-      - caption: Test Link
+      - caption: "Link 2"
         url: "https://google.com"
-        newTab: false
-        external: true
-
-      - caption: Test Link
-        url: "https://google.com"
-        newTab: false
-        external: true
-
-      - caption: Test Link
-        url: "https://google.com"
-        newTab: false
-        external: true
+        icon: "ph-coffee"
+        newTab: true
+    sections:
+      - caption: dev
+        links:
+          - caption: "Link 1"
+            url: "https://google.com"
+            icon: "ph-book-bookmark"
+            newTab: true
+          - caption: "Link 2"
+            url: "https://google.com"
+            icon: "ph-coffee"
+            newTab: true
+          - caption: "Link 3"
+            url: "https://google.com"
+            icon: "ph-heartbeat"
+            newTab: true
+          - caption: "Link 4"
+            url: "https://google.com"
+            icon: "ph-heartbeat"
+            newTab: true
+          - caption: "Link 5"
+            url: "https://google.com"
+            icon: "ph-heartbeat"
+            newTab: true
+          - caption: "Link 6"
+            url: "https://google.com"
+            icon: "ph-heartbeat"
+            newTab: true
+      - caption: qa
+        links:
+          - caption: "Link 1"
+            url: "https://google.com"
+            icon: "ph-book-bookmark"
+            newTab: true
+          - caption: "Link 2"
+            url: "https://google.com"
+            icon: "ph-coffee"
+            newTab: true
+          - caption: "Link 3"
+            url: "https://google.com"
+            icon: "ph-heartbeat"
+            newTab: true
   - caption: "Group 2"
-    hidden: true
-    id: "group-2"
-    links:
-      - caption: Test/tag 1
-        url: "https://google.com"
-        newTab: true
-        external: true
-
-      - caption: Test Link
-        url: "https://google.com"
-        newTab: true
-        external: true
-
-      - caption: Test Link
-        url: "https://google.com"
-        newTab: true
-        external: true
-  - caption: "Group 3"
-    hidden: false
-    id: "group-3"
-    links:
-      - caption: Test/tag 1
-        url: "https://google.com"
-        newTab: false
-        external: false
-
-      - caption: Test Link
-        url: "https://google.com"
-        newTab: false
-        external: false
-
-      - caption: Test Link
-        url: "https://google.com"
-        newTab: false
-        external: false
-
-      - caption: Test Link
-        url: "https://google.com"
-        newTab: false
-        external: false
-
-      - caption: Test Link
-        url: "https://google.com"
-        newTab: false
-        external: false
+    sections:
+      - caption: dev
+        links:
+          - caption: "Link 1"
+            url: "https://google.com"
+            icon: "ph-book-bookmark"
+            newTab: true
+          - caption: "Link 2"
+            url: "https://google.com"
+            icon: "ph-coffee"
+            newTab: true
+          - caption: "Link 3"
+            url: "https://google.com"
+            icon: "ph-heartbeat"
+            newTab: true
+      - caption: qa
+        links:
+          - caption: "Link 1"
+            url: "https://google.com"
+            icon: "ph-book-bookmark"
+            newTab: true
+          - caption: "Link 2"
+            url: "https://google.com"
+            icon: "ph-coffee"
+            newTab: true
+          - caption: "Link 3"
+            url: "https://google.com"
+            icon: "ph-heartbeat"
+            newTab: true
 

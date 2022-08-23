@@ -9,18 +9,22 @@ type Configuration struct {
 }
 
 type Group struct {
-	Id      string  `mapstructure:"id" json:"id"`
+	Caption  string     `mapstructure:"caption" json:"caption"`
+	Links    *[]Link    `mapstructure:"links" json:"links"`
+	Sections *[]Section `mapstructure:"sections" json:"sections"`
+}
+
+type Section struct {
 	Caption string  `mapstructure:"caption" json:"caption"`
 	Links   *[]Link `mapstructure:"links" json:"links"`
-	Hidden  bool    `mapstructure:"hidden" json:"hidden"`
 }
 
 type Link struct {
-	Caption  string `mapstructure:"caption" json:"caption"`
-	URL      string `mapstructure:"url" json:"url"`
-	Icon     string `mapstructure:"icon" json:"icon"`
-	NewTab   bool   `mapstructure:"newTab" json:"newTab"`
-	External bool   `mapstructure:"external" json:"external"`
+	Caption string  `mapstructure:"caption" json:"caption"`
+	URL     string  `mapstructure:"url" json:"url"`
+	Icon    string  `mapstructure:"icon" json:"icon"`
+	NewTab  bool    `mapstructure:"newTab" json:"newTab"`
+	Links   *[]Link `mapstructure:"links" json:"links"`
 }
 
 type App struct {

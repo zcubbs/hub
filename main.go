@@ -8,7 +8,6 @@ import (
 	"github.com/zcubbs/hub/configs"
 	"html/template"
 	"log"
-	"net/url"
 	"time"
 )
 
@@ -70,56 +69,6 @@ func main() {
 			"Links":      links,
 			"IsSubGroup": false,
 		})
-	})
-
-	app.Get("/group/:groupId/:subGroupId", func(c *fiber.Ctx) error {
-		groupId, err := url.QueryUnescape(c.Params("groupId"))
-		if err != nil {
-			log.Println(err)
-		}
-		subGroupId, err := url.QueryUnescape(c.Params("subGroupId"))
-		if err != nil {
-			log.Println(err)
-		}
-
-		groupCaption := ""
-		subGroupCaption := ""
-
-		for _, group := range *groups {
-			if group.Id == groupId {
-				groupCaption = group.Caption
-			}
-			if group.Id == subGroupId {
-				subGroupCaption = group.Caption
-			}
-		}
-
-		for _, group := range *groups {
-			if group.Id == subGroupId {
-				return c.Render("group", fiber.Map{
-					"Title":           title,
-					"SubTitle":        subTitle,
-					"Logo":            logo,
-					"Links":           group.Links,
-					"GroupCaption":    groupCaption,
-					"SubGroupCaption": subGroupCaption,
-					"IsSubGroup":      true,
-				})
-			}
-		}
-
-		return c.Render("group", fiber.Map{
-			"Title":      title,
-			"SubTitle":   subTitle,
-			"Logo":       logo,
-			"Disclaimer": disclaimer,
-			"ShowGithub": showGithub,
-			"CustomHtml": template.HTML(customHTML),
-			"Groups":     groups,
-			"Links":      links,
-			"IsSubGroup": false,
-		})
-
 	})
 
 	log.Fatal(app.Listen(":8000"))
