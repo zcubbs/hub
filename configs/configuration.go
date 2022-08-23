@@ -34,6 +34,7 @@ type App struct {
 	ShowGithub bool   `mapstructure:"showGithub" json:"showGithub"`
 	LogoUrl    string `mapstructure:"logoUrl" json:"logoUrl"`
 	Disclaimer string `mapstructure:"disclaimer" json:"disclaimer"`
+	Debug      bool   `mapstructure:"debug" json:"debug"`
 }
 
 type Server struct {

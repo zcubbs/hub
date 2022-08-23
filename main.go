@@ -36,6 +36,12 @@ func main() {
 	subTitle := configs.Config.App.Subtitle
 	logo := configs.Config.App.LogoUrl
 	devMode := configs.Config.Dev.Mode
+	debugMode := configs.Config.App.Debug
+
+	if debugMode {
+		fmt.Println(configs.Config)
+	}
+
 	engine := html.New("./internal/views", ".html")
 
 	app := fiber.New(fiber.Config{

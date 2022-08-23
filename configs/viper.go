@@ -38,6 +38,7 @@ var (
 		"app.logoUrl",
 		"app.disclaimer",
 		"dev.mode",
+		"dev.debug",
 		"server.tz",
 		"server.secure",
 		"server.port",
