@@ -2,7 +2,7 @@
 
 Bookmarks organizer & landing app
 
-![](_docs/showcase.png)
+![](_docs/showcase_2.png)
 
 ## Supported Platforms
 
