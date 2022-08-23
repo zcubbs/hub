@@ -78,7 +78,7 @@ func Bootstrap() {
 		}
 	}
 	viper.AutomaticEnv() // read in environment variables that match
-	viper.SetEnvPrefix(envPrefix)
+	//viper.SetEnvPrefix(envPrefix)
 
 	for _, key := range allowedEnvVarKeys {
 		err := viper.BindEnv(key)
