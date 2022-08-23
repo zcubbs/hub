@@ -21,7 +21,7 @@ groups:
         icon: "ph-coffee"
         newTab: true
     sections:
-      - caption: dev
+      - caption: section 1
         links:
           - caption: "Link 1"
             url: "https://google.com"
@@ -47,7 +47,7 @@ groups:
             url: "https://google.com"
             icon: "ph-heartbeat"
             newTab: true
-      - caption: qa
+      - caption: section 2
         links:
           - caption: "Link 1"
             url: "https://google.com"
