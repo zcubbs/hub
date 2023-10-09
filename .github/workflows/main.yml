@@ -5,6 +5,18 @@ on:
     branches: [ main ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
+    paths-ignore:
+      - 'README.md'
+      - 'docs/**'
+      - '_docs/**'
+      - '.github/**'
+      - 'LICENSE'
+      - 'Taskfile.yaml'
+      - '.gitignore'
+      - '.gosec.config.json'
+      - '.editorconfig'
+      - '.goreleaser.yaml'
+      - 'examples/**'
   pull_request:
     branches: [ main ]
 
