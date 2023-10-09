@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/template/html"
+	"github.com/gofiber/template/html/v2"
 	"github.com/joho/godotenv"
 	"github.com/zcubbs/hub/configs"
 	"html/template"
