@@ -2,7 +2,7 @@
 
 app:
   customHtml: |-
-    <div> test </div>
+    <div></div>
 data:
   links:
     - caption: Docs

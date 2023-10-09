@@ -27,7 +27,7 @@ var (
 		"app.disclaimer": `Link Hub For everyone.`,
 		"app.title":      "Hub",
 		"app.subtitle":   "Developer Hub",
-		"app.showGithub": true,
+		"app.showGithub": false,
 		"app.logoUrl":    "/assets/logo.png",
 	}
 	allowedEnvVarKeys = []string{
