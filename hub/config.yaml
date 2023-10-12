@@ -96,4 +96,11 @@ data:
               url: "https://google.com"
               icon: "ph-heartbeat"
               newTab: true
+  footers:
+    - caption: "Link 1"
+      url: "https://google.com"
+      icon: "ph-scooter"
+    - caption: "Link 2"
+      url: "https://google.com"
+      icon: "ph-coffee"
 
