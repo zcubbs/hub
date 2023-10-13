@@ -16,6 +16,7 @@ type Group struct {
 type Data struct {
 	Groups *[]Group `mapstructure:"groups" json:"groups"`
 	Links  *[]Link  `mapstructure:"links" json:"links"`
+	Footers *[]Footer `mapstructure:"footers" json:"footers"`
 }
 
 type Section struct {
@@ -49,4 +50,10 @@ type Server struct {
 
 type Dev struct {
 	Mode bool `mapstructure:"mode" json:"mode"`
+}
+
+type Footer struct {
+	Caption string  `mapstructure:"caption" json:"caption"`
+	URL     string  `mapstructure:"url" json:"url"`
+	Icon    string  `mapstructure:"icon" json:"icon"`
 }

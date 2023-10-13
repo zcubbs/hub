@@ -29,6 +29,7 @@ func main() {
 
 	groups := configs.Config.Data.Groups
 	links := configs.Config.Data.Links
+	footer := configs.Config.Data.Footers
 	title := configs.Config.App.Title
 	disclaimer := configs.Config.App.Disclaimer
 	customHTML := configs.Config.App.CustomHtml
@@ -73,6 +74,7 @@ func main() {
 			"CustomHtml": template.HTML(customHTML),
 			"Groups":     groups,
 			"Links":      links,
+			"Footers":    footer,
 		})
 	})
 
