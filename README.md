@@ -2,7 +2,7 @@
 
 Bookmarks organizer & landing app
 
-![](_docs/showcase_3.png)
+![](docs/showcase_3.png)
 
 ## Supported Platforms
 
@@ -10,10 +10,12 @@ Bookmarks organizer & landing app
 
 ## Configuration
 
-HuB is configured via a YAML file you can provide to the container/binary. The default configuration is located at `configs/config.yaml`. The following is an example configuration:
+HuB is configured via a YAML file you can provide to the container/binary. The example configuration is located at `examples/config.yaml`. The following is an example configuration:
 
 ```yaml
 app:
+  server:
+    port: <int>             # Application port
   customHtml: <string>      # Custom HTML content
   title: <string>           # Application title
   subtitle: <string>        # Application subtitle
@@ -38,6 +40,12 @@ data:
         - caption: <string>
           links:
             - ...
-
+  footer:
+    links:
+      - caption: <string>
+        url: <string>
+        icon: <string>
+        newTab: <bool>
+      - ...
 ```
 

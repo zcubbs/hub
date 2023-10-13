@@ -1,0 +1,5 @@
+linters-settings:
+  gosec:
+    # To specify a set of rules to explicitly exclude.
+    # Available rules: https://github.com/securego/gosec#available-rules
+    excludes: []

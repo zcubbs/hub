@@ -1,0 +1,64 @@
+version: '3'
+
+vars:
+  GOOS: "{{OS}}"
+
+tasks:
+
+  test:
+    cmds:
+      - go test ./...
+
+  build:
+    cmds:
+      - task: build:{{OS}}
+
+  build:windows:
+    cmds:
+      - go env -w GOOS=windows GOARCH=amd64
+      - go build -o bin/hub.exe ./main.go
+
+  build:darwin:
+    cmds:
+      - go env -w GOOS=darwin GOARCH=amd64
+      - go build -o bin/hub ./main.go
+
+  build:linux:
+    cmds:
+      - go env -w GOOS=linux GOARCH=amd64
+      - go build -o bin/hub ./main.go
+
+  run:
+    cmds:
+      - task: build:{{OS}}
+      - task: run:{{OS}}
+        vars:
+          ARGS: "{{.CLI_ARGS}}"
+
+  run:darwin:
+    cmds:
+      - bin/hub
+  run:linux:
+    cmds:
+      - bin/hub
+  run:windows:
+    cmds:
+      - bin/hub.exe -config examples/config.yaml {{.ARGS}}
+
+  lint:
+    cmds:
+      - golangci-lint run ./... -v --timeout 5m
+
+  scan:
+    cmds:
+      - gosec -conf .gosec.config.json "./..."
+
+  tools:install:golangci-lint:
+    desc: Install golangci-lint
+    cmds:
+      - go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+  tools:install:gosec:
+    desc: Install gosec
+    cmds:
+      - go install github.com/securego/gosec/v2/cmd/gosec@latest

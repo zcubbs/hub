@@ -1,0 +1,9 @@
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hub
+data:
+  config.yaml: |-
+  {{ .Values.config | nindent 12 }}

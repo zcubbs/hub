@@ -1,4 +1,4 @@
-package configs
+package config
 
 type Configuration struct {
 	Server `mapstructure:"server" json:"server"`
@@ -8,28 +8,28 @@ type Configuration struct {
 }
 
 type Group struct {
-	Caption  string     `mapstructure:"caption" json:"caption"`
-	Links    *[]Link    `mapstructure:"links" json:"links"`
-	Sections *[]Section `mapstructure:"sections" json:"sections"`
+	Caption  string    `mapstructure:"caption" json:"caption"`
+	Links    []Link    `mapstructure:"links" json:"links"`
+	Sections []Section `mapstructure:"sections" json:"sections"`
 }
 
 type Data struct {
-	Groups *[]Group `mapstructure:"groups" json:"groups"`
-	Links  *[]Link  `mapstructure:"links" json:"links"`
-	Footers *[]Footer `mapstructure:"footers" json:"footers"`
+	Groups []Group `mapstructure:"groups" json:"groups"`
+	Links  []Link  `mapstructure:"links" json:"links"`
+	Footer Footer  `mapstructure:"footerLinks" json:"footerLinks"`
 }
 
 type Section struct {
-	Caption string  `mapstructure:"caption" json:"caption"`
-	Links   *[]Link `mapstructure:"links" json:"links"`
+	Caption string `mapstructure:"caption" json:"caption"`
+	Links   []Link `mapstructure:"links" json:"links"`
 }
 
 type Link struct {
-	Caption string  `mapstructure:"caption" json:"caption"`
-	URL     string  `mapstructure:"url" json:"url"`
-	Icon    string  `mapstructure:"icon" json:"icon"`
-	NewTab  bool    `mapstructure:"newTab" json:"newTab"`
-	Links   *[]Link `mapstructure:"links" json:"links"`
+	Caption string `mapstructure:"caption" json:"caption"`
+	URL     string `mapstructure:"url" json:"url"`
+	Icon    string `mapstructure:"icon" json:"icon"`
+	NewTab  bool   `mapstructure:"newTab" json:"newTab"`
+	Links   []Link `mapstructure:"links" json:"links"`
 }
 
 type App struct {
@@ -43,7 +43,7 @@ type App struct {
 }
 
 type Server struct {
-	Port   string `mapstructure:"port" json:"port"`
+	Port   int    `mapstructure:"port" json:"port"`
 	Secure bool   `mapstructure:"secure" json:"secure"`
 	Tz     string `mapstructure:"tz" json:"tz"`
 }
@@ -53,7 +53,5 @@ type Dev struct {
 }
 
 type Footer struct {
-	Caption string  `mapstructure:"caption" json:"caption"`
-	URL     string  `mapstructure:"url" json:"url"`
-	Icon    string  `mapstructure:"icon" json:"icon"`
+	Links []Link `mapstructure:"links" json:"links"`
 }
