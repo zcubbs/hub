@@ -1,6 +1,16 @@
-# HuB
+# hub
 
-Bookmarks organizer & landing app
+`hub` is a links & bookmarks app designed to be simple, lightweight, and easy to use. It relies on a YAML configuration file to define the links and groups. Can be deployed as a container or binary. A Helm chart is also available.
+
+[![tag](https://img.shields.io/github/tag/zcubbs/hub)](https://github.com/zcubbs/hub/releases)
+![Go Version](https://img.shields.io/badge/Go-%3E%3D%201.21-%23007d9c)
+[![GoDoc](https://godoc.org/github.com/zcubbs/hub?status.svg)](https://pkg.go.dev/github.com/zcubbs/hub)
+[![Lint](https://github.com/zcubbs/hub/actions/workflows/lint.yaml/badge.svg)](https://github.com/zcubbs/hub/actions/workflows/lint.yaml)
+[![Scan](https://github.com/zcubbs/hub/actions/workflows/scan.yaml/badge.svg?branch=main)](https://github.com/zcubbs/hub/actions/workflows/scan.yaml)
+![Build Status](https://github.com/zcubbs/hub/actions/workflows/test.yaml/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/zcubbs/hub)](https://goreportcard.com/report/github.com/zcubbs/hub)
+[![Contributors](https://img.shields.io/github/contributors/zcubbs/hub)](https://github.com/zcubbs/hub/graphs/contributors)
+[![License](https://img.shields.io/github/license/zcubbs/hub.svg)](./LICENSE)
 
 ![](docs/showcase_3.png)
 
