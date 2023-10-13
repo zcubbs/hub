@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hub
+  labels:
+    app: hub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hub
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      labels:
+        app: hub
+    spec:
+      containers:
+        - name: hub
+          image: {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            {{- if .Values.deployment.extraEnv }}
+            {{- include "common.tplvalues.render" (dict "value" .Values.deployment.extraEnv "context" $) | nindent 12 }}
+            {{- end }}
+
+          volumeMounts:
+            - mountPath: /app/config.yaml
+              subPath: "config.yaml"
+              name: hub-config-volume
+          {{- if .Values.deployment.resources }}
+          resources:
+            {{- if .Values.deployment.resources.requests }}
+            requests:
+              memory: {{ .Values.deployment.resources.requests.memory | default "50Mi" | quote }}
+              cpu: {{ .Values.deployment.resources.requests.cpu | default "10m" | quote }}
+            {{- else}}
+            requests:
+              memory: "50Mi"
+              cpu: "10m"
+            {{- end}}
+            {{- if .Values.deployment.resources.limits }}
+            limits:
+              memory: {{ .Values.deployment.resources.limits.memory | default "100Mi" | quote }}
+              cpu: {{ .Values.deployment.resources.limits.cpu | default "15m" | quote }}
+            {{- else}}
+            limits:
+              memory: "100Mi"
+              cpu: "15m"
+            {{- end }}
+          {{- else }}
+          resources:
+            requests:
+              memory: "50Mi"
+              cpu: "10m"
+            limits:
+              memory: "100Mi"
+              cpu: "15m"
+          {{- end}}
+      volumes:
+        - name: hub-config-volume
+          configMap:
+            name: hub

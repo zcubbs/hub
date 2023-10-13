@@ -2,17 +2,21 @@
     <nav class="nav-items">
         <div class="title" onclick="goTo('/')"><span><img class="logo" src="{{.Logo}}" alt=""/></span>{{.SubTitle}}</div>
         {{ if .ShowGithub }}
-        <div class="repo-link" onclick="goToNewTab('https://github.com/zcubbs/hub-v2')">
+        <div class="repo-link" onclick="goToNewTab('https://github.com/zcubbs/hub')">
             <span><img class="logo" width="24px" height="24px" src="/assets/github.png" alt=""/></span>
         </div>
         {{ end }}
-        {{if .Footers}}
+        {{if .Footer}}
             <div class="quick-links">
-                {{range .Footers}}
+                {{range .Footer}}
                     {{$groupCaption := .Caption}}
                         <a href="{{.URL}}" target="_blank" class="{{.Icon}} icon">{{.Caption}}</a>
                 {{end}}
             </div>
         {{end}}
     </nav>
+
+    <div class="version-wrapper">
+        <span>Version: {{.Version}}</span>
+    </div>
 </div>

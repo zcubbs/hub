@@ -1,61 +1,73 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
-	"github.com/joho/godotenv"
-	"github.com/zcubbs/hub/configs"
+	"github.com/zcubbs/hub/internal/config"
 	"html/template"
 	"log"
+	"runtime"
 	"time"
 )
 
-func init() {
+var (
+	Version = "dev"
+	Commit  = "none"
+	Date    = "unknown"
+)
 
-	err := godotenv.Load(".env")
+var (
+	configPath = flag.String("config", "./config.yaml", "Path to config file")
+)
 
-	if err != nil {
-		log.Println("Error loading .env file")
-	}
-}
+////go:embed web/public
+//var publicFs embed.FS
+//
+////go:embed web/views
+//var viewsFs embed.FS
 
 func main() {
-	//Print out splash screen
-	fmt.Printf(`%s%-16s`+"\n\n", configs.Splash, configs.Version)
+	flag.Parse()
+	//Print out version information
+	fmt.Println("Hub")
+	fmt.Println("Version:", Version)
+	fmt.Println("Commit:", Commit)
+	fmt.Println("Date:", Date)
+	fmt.Println(runtime.GOOS, runtime.GOARCH)
 
-	//Bootstrap configs
-	configs.Bootstrap()
-
-	groups := configs.Config.Data.Groups
-	links := configs.Config.Data.Links
-	footer := configs.Config.Data.Footers
-	title := configs.Config.App.Title
-	disclaimer := configs.Config.App.Disclaimer
-	customHTML := configs.Config.App.CustomHtml
-	showGithub := configs.Config.App.ShowGithub
-	subTitle := configs.Config.App.Subtitle
-	logo := configs.Config.App.LogoUrl
-	devMode := configs.Config.Dev.Mode
-	debugMode := configs.Config.App.Debug
-
-	if debugMode {
-		configs.DebugConfig()
+	// Load config
+	cfg, err := config.Load(*configPath)
+	if err != nil {
+		log.Fatalf("Error loading config: %v", err)
 	}
 
-	engine := html.New("./internal/views", ".html")
+	groups := cfg.Data.Groups
+	links := cfg.Data.Links
+	footer := cfg.Data.Footer
+	title := cfg.App.Title
+	disclaimer := cfg.App.Disclaimer
+	customHTML := cfg.App.CustomHtml
+	showGithub := cfg.App.ShowGithub
+	subTitle := cfg.App.Subtitle
+	logo := cfg.App.LogoUrl
+	devMode := cfg.Dev.Mode
+
+	engine := html.New("./web/views", ".html")
 
 	app := fiber.New(fiber.Config{
-		Views:       engine,
-		ViewsLayout: "layouts/main",
+		Views:                 engine,
+		ViewsLayout:           "layouts/main",
+		DisableStartupMessage: true,
 	})
-	app.Static("/css", "./internal/public/css", fiber.Static{
+	app.Static("/css", "./web/public/css", fiber.Static{
 		Compress:      true,
 		ByteRange:     true,
 		CacheDuration: 10 * time.Second,
 		MaxAge:        3600,
 	})
-	app.Static("/assets", "./internal/public/assets", fiber.Static{
+	app.Static("/assets", "./web/public/assets", fiber.Static{
 		Compress:      true,
 		ByteRange:     true,
 		CacheDuration: 10 * time.Second,
@@ -71,12 +83,12 @@ func main() {
 			"Logo":       logo,
 			"Disclaimer": disclaimer,
 			"ShowGithub": showGithub,
-			"CustomHtml": template.HTML(customHTML),
+			"CustomHtml": template.HTML(customHTML), // unescaped html
 			"Groups":     groups,
 			"Links":      links,
-			"Footers":    footer,
+			"Footer":     footer,
 		})
 	})
 
-	log.Fatal(app.Listen(":8000"))
+	log.Fatal(app.Listen(fmt.Sprintf(":%d", cfg.Server.Port)))
 }
