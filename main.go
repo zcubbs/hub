@@ -1,7 +1,6 @@
 package main
 
 import (
-	"embed"
 	"flag"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
@@ -23,11 +22,11 @@ var (
 	configPath = flag.String("config", "./config.yaml", "Path to config file")
 )
 
-//go:embed web/public
-var publicFs embed.FS
-
-//go:embed web/views
-var viewsFs embed.FS
+////go:embed web/public
+//var publicFs embed.FS
+//
+////go:embed web/views
+//var viewsFs embed.FS
 
 func main() {
 	flag.Parse()
