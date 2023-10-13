@@ -1,22 +1,20 @@
-<div class="top-nav">
-    <nav class="nav-items">
-        <div class="title" onclick="goTo('/')"><span><img class="logo" src="{{.Logo}}" alt=""/></span>{{.SubTitle}}</div>
-        {{ if .ShowGithub }}
-        <div class="repo-link" onclick="goToNewTab('https://github.com/zcubbs/hub')">
-            <span><img class="logo" width="24px" height="24px" src="/assets/github.png" alt=""/></span>
-        </div>
-        {{ end }}
-        {{if .Footer}}
-            <div class="quick-links">
-                {{range .Footer}}
-                    {{$groupCaption := .Caption}}
-                        <a href="{{.URL}}" target="_blank" class="{{.Icon}} icon">{{.Caption}}</a>
-                {{end}}
-            </div>
-        {{end}}
-    </nav>
-
-    <div class="version-wrapper">
-        <span>Version: {{.Version}}</span>
+<footer>
+  <div class="footer-container">
+    {{ if .ShowGithub }}
+    <div class="footer-logo" onclick="goToNewTab('https://github.com/zcubbs/hub')">
+      <img src="/assets/github-light.png" alt="Logo" />
+      <span>zcubbs/hub - v{{.Version}}</span>
     </div>
-</div>
+    {{ else }}
+    <div class="footer-logo" onclick="goTo('/')">
+      <img src="{{.Logo}}" alt="Logo" />
+      <span>v{{.Version}}</span>
+    </div>
+    {{ end }}
+    <div class="footer-links">
+      {{ range .Footer.Links }}
+      <a href="{{ .URL }}" target="{{ if .NewTab }}_blank{{ else }}_self{{ end }}" class="{{ .Icon }} icon">{{ .Caption }}</a>
+      {{ end }}
+    </div>
+  </div>
+</footer>

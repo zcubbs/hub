@@ -97,11 +97,18 @@ data:
               url: "https://google.com"
               icon: "ph-heartbeat"
               newTab: true
-  footers:
-    - caption: "Link 1"
-      url: "https://google.com"
-      icon: "ph-scooter"
-    - caption: "Link 2"
-      url: "https://google.com"
-      icon: "ph-coffee"
+  footer:
+    links:
+      - caption: "Link 1"
+        url: "https://google.com"
+        icon: "ph-scooter"
+        newTab: true
+      - caption: "Link 2"
+        url: "https://google.com"
+        icon: "ph-coffee"
+        newTab: true
+      - caption: "Link 3"
+        url: "https://google.com"
+        icon: "ph-coffee"
+        newTab: true
 

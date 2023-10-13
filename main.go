@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	Version = "dev"
+	Version = "0.0.0"
 	Commit  = "none"
 	Date    = "unknown"
 )
@@ -87,6 +87,7 @@ func main() {
 			"Groups":     groups,
 			"Links":      links,
 			"Footer":     footer,
+			"Version":    Version,
 		})
 	})
 

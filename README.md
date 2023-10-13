@@ -12,11 +12,39 @@
 [![Contributors](https://img.shields.io/github/contributors/zcubbs/hub)](https://github.com/zcubbs/hub/graphs/contributors)
 [![License](https://img.shields.io/github/license/zcubbs/hub.svg)](./LICENSE)
 
-![](docs/showcase_3.png)
+![](docs/showcase_4.png)
 
 ## Supported Platforms
 
 - linux_amd64/linux_arm64
+
+## Installation
+
+### From Binary
+
+You can download the latest release from [here](https://github.com/zcubbs/hub/releases)
+```bash
+hub -config /path/to/config.yaml
+```
+
+### Using Docker
+
+```bash
+docker run -d \
+    -p 8080:8080 \
+    -v /path/to/config.yaml:/app/config.yaml \
+    zcubbs/hub:latest
+```
+
+### Using Helm
+
+```bash
+helm repo add hub https://zcubbs.github.io/hub
+helm repo update
+helm install hub hub/hub -f values.yaml
+```
+
+see [values.yaml](chart/values.yaml) for the default values.
 
 ## Configuration
 

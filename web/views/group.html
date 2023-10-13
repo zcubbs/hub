@@ -1,89 +1,89 @@
 {{template "partials/header" .}}
-
-<div class="disclaimer">
+<div class="content">
+  <div class="disclaimer">
     {{.Disclaimer}}
     {{.CustomHtml}}
-</div>
-<ul>
+  </div>
+  <ul>
     <div class="container">
-        <div class="sub-header"></div>
-        <div class="container-section">
+      <div class="sub-header"></div>
+      <div class="container-section">
+        {{range .Links}}
+        <a href="{{.URL}}" target="_blank" class="main-link">
+          <em class="{{.Icon}} icon" style="color: gray"></em>
+          {{.Caption}}
+        </a>
+        {{end}}
+      </div>
+      <div class="container-section">
+        {{range .Groups}}
+        {{$groupCaption := .Caption}}
+        <div class="sub-header thick-line">
+          <em class="ph-cube icon"></em>
+          {{.Caption}}
+        </div>
+
+        <div class="flex-container">
+          {{if .Links}}
+          {{range .Links}}
+          {{if .NewTab}}
+          <div onclick="goToNewTab('{{.URL }}')" class="flex-item">
+            <em
+              {{if .Icon}}
+              class="{{.Icon}} icon"
+              {{else}}
+              class="ph-paper-plane-tilt icon"
+              {{end}}
+            >
+
+            </em>
+            <span class="caption">{{.Caption}}</span>
+          </div>
+          {{else}}
+          <div onclick="goTo('{{.URL }}')" class="flex-item">
+            <em class="ph-paper-plane-tilt icon"></em>
+            <span class="caption">{{.Caption}}</span>
+          </div>
+          {{end}}
+          {{end}}
+          {{end}}
+
+          {{ if .Sections }}
+          {{ range .Sections }}
+          <div class="section">
+            <div class="section-caption-wrapper">
+              <span class="section-caption">{{ .Caption}}</span>
+            </div>
+            {{if .Links}}
             {{range .Links}}
-            <a href="{{.URL}}" target="_blank" class="main-link">
-                <em class="{{.Icon}} icon" style="color: gray"></em>
-                {{.Caption}}
-            </a>
+            {{if .NewTab}}
+            <div onclick="goToNewTab('{{.URL }}')" class="flex-item">
+              <em
+                {{if .Icon}}
+                class="{{.Icon}} icon"
+                {{else}}
+                class="ph-paper-plane-tilt icon"
+                {{end}}
+              >
+
+              </em>
+              <span class="caption">{{.Caption}}</span>
+            </div>
+            {{else}}
+            <div onclick="goTo('{{.URL }}')" class="flex-item">
+              <em class="ph-paper-plane-tilt icon"></em>
+              <span class="caption">{{.Caption}}</span>
+            </div>
             {{end}}
-        </div>
-        <div class="container-section">
-            {{range .Groups}}
-                {{$groupCaption := .Caption}}
-                <div class="sub-header thick-line">
-                    <em class="ph-cube icon"></em>
-                    {{.Caption}}
-                </div>
-
-                <div class="flex-container">
-                    {{if .Links}}
-                        {{range .Links}}
-                                {{if .NewTab}}
-                                    <div onclick="goToNewTab('{{.URL }}')" class="flex-item">
-                                        <em
-                                                {{if .Icon}}
-                                                    class="{{.Icon}} icon"
-                                                {{else}}
-                                                    class="ph-paper-plane-tilt icon"
-                                                {{end}}
-                                        >
-
-                                        </em>
-                                        <span class="caption">{{.Caption}}</span>
-                                    </div>
-                                {{else}}
-                                    <div onclick="goTo('{{.URL }}')" class="flex-item">
-                                        <em class="ph-paper-plane-tilt icon"></em>
-                                        <span class="caption">{{.Caption}}</span>
-                                    </div>
-                                {{end}}
-                        {{end}}
-                    {{end}}
-
-                    {{ if .Sections }}
-                        {{ range .Sections }}
-                            <div class="section">
-                                <div class="section-caption-wrapper">
-                                    <span class="section-caption">{{ .Caption}}</span>
-                                </div>
-                                {{if .Links}}
-                                {{range .Links}}
-                                {{if .NewTab}}
-                                <div onclick="goToNewTab('{{.URL }}')" class="flex-item">
-                                    <em
-                                            {{if .Icon}}
-                                            class="{{.Icon}} icon"
-                                            {{else}}
-                                            class="ph-paper-plane-tilt icon"
-                                            {{end}}
-                                    >
-
-                                    </em>
-                                    <span class="caption">{{.Caption}}</span>
-                                </div>
-                                {{else}}
-                                <div onclick="goTo('{{.URL }}')" class="flex-item">
-                                    <em class="ph-paper-plane-tilt icon"></em>
-                                    <span class="caption">{{.Caption}}</span>
-                                </div>
-                                {{end}}
-                                {{end}}
-                                {{end}}
-                            </div>
-                        {{ end }}
-                    {{ end }}
-                </div>
             {{end}}
+            {{end}}
+          </div>
+          {{ end }}
+          {{ end }}
         </div>
+        {{end}}
+      </div>
     </div>
-</ul>
-
+  </ul>
+</div>
 {{template "partials/footer" .}}
