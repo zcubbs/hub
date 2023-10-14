@@ -85,3 +85,23 @@ data:
       - ...
 ```
 
+## Development
+
+### Prerequisites
+
+- [Go](https://golang.org/doc/install)
+- [Task](https://taskfile.dev/#/installation)
+
+### Run Locally
+
+```bash
+task run
+```
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+HuB is licensed under the [MIT](./LICENSE) license.
