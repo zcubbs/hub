@@ -14,11 +14,9 @@
 
 ![](docs/showcase_4.png)
 
-## Supported Platforms
-
-- linux_amd64/linux_arm64
-
 ## Installation
+
+> Supported Platforms: `linux_amd64/linux_arm64`.
 
 ### From Binary
 
@@ -46,7 +44,7 @@ see [values.yaml](charts/hub/values.yaml) for the default values.
 
 ## Configuration
 
-HuB is configured via a YAML file you can provide to the container/binary. The example configuration is located at `examples/config.yaml`. The following is an example configuration:
+HuB is configured via a YAML file you can provide to the container/binary. The example configuration is located at [config.yaml](./examples/config.yaml). The following is an example configuration:
 
 ```yaml
 app:
