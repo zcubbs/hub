@@ -43,7 +43,7 @@ jobs:
           VERSION: ${{ github.ref_name }}
         run: |
           CHART_VERSION=$(echo $VERSION | cut -c 2-)
-          cd charts/hub
+          cd chart
           helm dep up
           helm package . --version ${CHART_VERSION} --app-version ${VERSION}
           helm push hub-${CHART_VERSION}.tgz oci://${CHARTS_REPO}
