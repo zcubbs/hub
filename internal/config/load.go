@@ -24,7 +24,7 @@ func Load(path string) (*Configuration, error) {
 
 	err := viper.ReadInConfig()
 	if err != nil {
-		return nil, fmt.Errorf("unable to load config file path=%s err=%s", path, err)
+		fmt.Printf("warn: unable to load config file path=%s err=%s\n", path, err)
 	}
 
 	err = viper.Unmarshal(&cfg)
