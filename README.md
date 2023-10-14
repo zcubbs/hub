@@ -39,9 +39,7 @@ docker run -d \
 ### Using Helm
 
 ```bash
-helm repo add hub https://zcubbs.github.io/hub
-helm repo update
-helm install hub hub/hub -f values.yaml
+helm install hub oci://ghcr.io/zcubbs/hub/hub -f /path/to/values.yaml
 ```
 
 see [values.yaml](chart/values.yaml) for the default values.
