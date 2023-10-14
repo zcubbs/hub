@@ -1,5 +1,3 @@
-ingress:
-  host: hub.localhost
 deployment:
   image: ghcr.io/zcubbs/hub
   tag: latest

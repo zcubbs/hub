@@ -31,22 +31,22 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
 
-#      - name: Run chart-releaser
-#        uses: helm/chart-releaser-action@v1.5.0
-#        env:
-#          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
       - name: Publish chart
         env:
           HELM_EXPERIMENTAL_OCI: '1'
           CHARTS_REPO: ghcr.io/${{ github.repository }}
           VERSION: ${{ github.ref_name }}
         # read chart version from Chart.yaml and increment it
+        # then update Chart.yaml and push it back to the repo
         run: |
-          CHART_VERSION=$(yq e '.version' charts/hub/Chart.yaml)
-          CHART_VERSION=$(echo $CHART_VERSION | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
+          CURRENT_CHART_VERSION=$(yq e '.version' charts/hub/Chart.yaml)
+          CHART_VERSION=$(echo $CURRENT_CHART_VERSION | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
           echo "Chart version: $CHART_VERSION"
           cd charts/hub
           helm dep up
           helm package . --version ${CHART_VERSION} --app-version ${VERSION}
           helm push hub-${CHART_VERSION}.tgz oci://${CHARTS_REPO}
+          sed -i "s/version: ${CURRENT_CHART_VERSION}/version: ${CHART_VERSION}/g" Chart.yaml
+          git add Chart.yaml
+          git commit -m "Bump chart version to ${CHART_VERSION}"
+          git push origin ${{ github.ref_name }}
