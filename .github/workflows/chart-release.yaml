@@ -48,5 +48,5 @@ jobs:
           helm push hub-${CHART_VERSION}.tgz oci://${CHARTS_REPO}
           sed -i "s/version: ${CURRENT_CHART_VERSION}/version: ${CHART_VERSION}/g" Chart.yaml
           git add Chart.yaml
-          git commit -m "Bump chart version to ${CHART_VERSION}"
+          git commit -m "📦 Bump chart version to ${CHART_VERSION}"
           git push origin ${{ github.ref_name }}
