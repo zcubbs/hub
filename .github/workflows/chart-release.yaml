@@ -41,9 +41,12 @@ jobs:
           HELM_EXPERIMENTAL_OCI: '1'
           CHARTS_REPO: ghcr.io/${{ github.repository }}
           VERSION: ${{ github.ref_name }}
+        # read chart version from Chart.yaml and increment it
         run: |
-          CHART_VERSION=$(echo $VERSION | cut -c 2-)
-          cd chart
+          CHART_VERSION=$(yq e '.version' charts/hub/Chart.yaml)
+          CHART_VERSION=$(echo $CHART_VERSION | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
+          echo "Chart version: $CHART_VERSION"
+          cd charts/hub
           helm dep up
           helm package . --version ${CHART_VERSION} --app-version ${VERSION}
           helm push hub-${CHART_VERSION}.tgz oci://${CHARTS_REPO}
