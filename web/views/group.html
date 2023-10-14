@@ -16,9 +16,9 @@
         {{end}}
       </div>
       <div class="container-section">
-        {{-if not .Groups}}
+        {{if not .Groups}}
         <p>No links to show.</p>
-        {{-end}}
+        {{end}}
         {{range .Groups}}
         {{$groupCaption := .Caption}}
         <div class="sub-header thick-line">
