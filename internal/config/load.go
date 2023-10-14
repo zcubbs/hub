@@ -86,7 +86,7 @@ var defaults = map[string]interface{}{
 	"app.disclaimer": `Link Hub For everyone.`,
 	"app.title":      "Hub",
 	"app.subtitle":   "Developer Hub",
-	"app.showGithub": false,
+	"app.showGithub": true,
 	"app.logoUrl":    "/assets/logo.png",
 	"data.links":     []Link{},
 	"data.groups":    []Group{},
