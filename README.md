@@ -31,7 +31,7 @@ hub -config /path/to/config.yaml
 
 ```bash
 docker run -d \
-    -p 8080:8080 \
+    -p 8000:8000 \
     -v /path/to/config.yaml:/app/config.yaml \
     zcubbs/hub:latest
 ```
