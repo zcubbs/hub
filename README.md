@@ -33,7 +33,7 @@ hub -config /path/to/config.yaml
 docker run -d \
     -p 8000:8000 \
     -v /path/to/config.yaml:/app/config.yaml \
-    zcubbs/hub:latest
+    ghcr.io/zcubbs/hub:latest
 ```
 
 ### Using Helm
