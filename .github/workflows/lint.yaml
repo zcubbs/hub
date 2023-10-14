@@ -10,6 +10,9 @@ on:
     paths-ignore:
       - 'README.md'
       - 'docs/**'
+      - 'chart/**'
+      - 'charts/**'
+      - 'scripts/**'
       - '.github/**'
       - 'LICENSE'
       - 'Taskfile.yaml'
