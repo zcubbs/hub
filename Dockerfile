@@ -5,15 +5,11 @@ RUN mkdir app
 
 RUN ls -la
 
-# Copy binary & static assets from build to main folder.
+# Copy binary
 COPY hub /app
-COPY web/views /app/web/views
-COPY web/public /app/web/public
 
-# Export necessary port.
 WORKDIR /app
 
 USER nonroot
 
-# Command to run when starting the container.
 ENTRYPOINT ["./hub"]

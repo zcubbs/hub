@@ -37,10 +37,10 @@ tasks:
 
   run:darwin:
     cmds:
-      - bin/hub
+      - bin/hub -config examples/config.yaml {{.ARGS}}
   run:linux:
     cmds:
-      - bin/hub
+      - bin/hub -config examples/config.yaml {{.ARGS}}
   run:windows:
     cmds:
       - bin/hub.exe -config examples/config.yaml {{.ARGS}}

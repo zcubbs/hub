@@ -1,15 +1,17 @@
 package main
 
 import (
+	"embed"
 	"flag"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/filesystem"
 	"github.com/gofiber/template/html/v2"
 	"github.com/zcubbs/hub/internal/config"
 	"html/template"
 	"log"
+	"net/http"
 	"runtime"
-	"time"
 )
 
 var (
@@ -22,11 +24,14 @@ var (
 	configPath = flag.String("config", "./config.yaml", "Path to config file")
 )
 
-////go:embed web/public
-//var publicFs embed.FS
-//
-////go:embed web/views
-//var viewsFs embed.FS
+//go:embed web/public/css/*
+var cssFs embed.FS
+
+//go:embed web/public/assets/*
+var assetsFs embed.FS
+
+//go:embed web/views/*
+var viewsFs embed.FS
 
 func main() {
 	flag.Parse()
@@ -54,28 +59,35 @@ func main() {
 	logo := cfg.App.LogoUrl
 	devMode := cfg.Dev.Mode
 
-	engine := html.New("./web/views", ".html")
+	// init template engine
+	engine := html.NewFileSystem(http.FS(viewsFs), ".html")
+	engine.Engine.Directory = "web/views"
+	engine.Reload(devMode)
 
+	// init server
 	app := fiber.New(fiber.Config{
 		Views:                 engine,
 		ViewsLayout:           "layouts/main",
 		DisableStartupMessage: true,
 	})
-	app.Static("/css", "./web/public/css", fiber.Static{
-		Compress:      true,
-		ByteRange:     true,
-		CacheDuration: 10 * time.Second,
-		MaxAge:        3600,
-	})
-	app.Static("/assets", "./web/public/assets", fiber.Static{
-		Compress:      true,
-		ByteRange:     true,
-		CacheDuration: 10 * time.Second,
-		MaxAge:        3600,
-	})
 
-	engine.Reload(devMode)
+	// serve static files
+	app.Use("/css", filesystem.New(
+		filesystem.Config{
+			Root:       http.FS(cssFs),
+			PathPrefix: "web/public/css",
+			Browse:     false,
+		},
+	))
+	app.Use("/assets", filesystem.New(
+		filesystem.Config{
+			Root:       http.FS(assetsFs),
+			PathPrefix: "web/public/assets",
+			Browse:     false,
+		},
+	))
 
+	// serve index
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Render("group", fiber.Map{
 			"Title":      title,
@@ -91,5 +103,6 @@ func main() {
 		})
 	})
 
+	// serve
 	log.Fatal(app.Listen(fmt.Sprintf(":%d", cfg.Server.Port)))
 }
