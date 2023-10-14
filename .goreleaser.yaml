@@ -40,8 +40,8 @@ dockers:
     goos: linux
     goarch: amd64
     image_templates:
-      - "zcubbs/{{ .ProjectName }}:{{ .Version }}-amd64"
-      - "zcubbs/{{ .ProjectName }}:latest-amd64"
+      - "ghcr.io/zcubbs/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "ghcr.io/zcubbs/{{ .ProjectName }}:latest-amd64"
     build_flag_templates:
       - "--platform=linux/amd64"
       - "--label=org.opencontainers.image.created={{.Date}}"
@@ -52,8 +52,8 @@ dockers:
     goos: linux
     goarch: arm64
     image_templates:
-      - "zcubbs/{{ .ProjectName }}:{{ .Version }}-arm64"
-      - "zcubbs/{{ .ProjectName }}:latest-arm64"
+      - "ghcr.io/zcubbs/{{ .ProjectName }}:{{ .Version }}-arm64"
+      - "ghcr.io/zcubbs/{{ .ProjectName }}:latest-arm64"
     build_flag_templates:
       - "--platform=linux/arm64"
       - "--label=org.opencontainers.image.created={{.Date}}"
@@ -63,12 +63,12 @@ dockers:
 docker_manifests:
   - name_template: zcubbs/{{ .ProjectName }}:{{ .Version }}
     image_templates:
-      - zcubbs/{{ .ProjectName }}:{{ .Version }}-amd64
-      - zcubbs/{{ .ProjectName }}:{{ .Version }}-arm64
+      - ghcr.io/zcubbs/{{ .ProjectName }}:{{ .Version }}-amd64
+      - ghcr.io/zcubbs/{{ .ProjectName }}:{{ .Version }}-arm64
   - name_template: zcubbs/{{ .ProjectName }}:latest
     image_templates:
-      - zcubbs/{{ .ProjectName }}:latest-amd64
-      - zcubbs/{{ .ProjectName }}:latest-arm64
+      - ghcr.io/zcubbs/{{ .ProjectName }}:latest-amd64
+      - ghcr.io/zcubbs/{{ .ProjectName }}:latest-arm64
 changelog:
   sort: asc
   filters:

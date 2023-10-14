@@ -5,6 +5,9 @@ on:
 permissions:
   contents: write
   packages: write
+  # This is used for the identity challenge
+  # with sigstore/fulcio when outside PRs.
+  id-token: write
 jobs:
   release:
     if : github.triggering_actor == 'zcubbs'
