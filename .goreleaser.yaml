@@ -61,11 +61,11 @@ dockers:
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.version={{.Version}}"
 docker_manifests:
-  - name_template: zcubbs/{{ .ProjectName }}:{{ .Version }}
+  - name_template: ghcr.io/zcubbs/{{ .ProjectName }}:{{ .Version }}
     image_templates:
       - ghcr.io/zcubbs/{{ .ProjectName }}:{{ .Version }}-amd64
       - ghcr.io/zcubbs/{{ .ProjectName }}:{{ .Version }}-arm64
-  - name_template: zcubbs/{{ .ProjectName }}:latest
+  - name_template: ghcr.io/zcubbs/{{ .ProjectName }}:latest
     image_templates:
       - ghcr.io/zcubbs/{{ .ProjectName }}:latest-amd64
       - ghcr.io/zcubbs/{{ .ProjectName }}:latest-arm64
