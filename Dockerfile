@@ -10,6 +10,4 @@ COPY hub /app
 
 WORKDIR /app
 
-USER nonroot
-
 ENTRYPOINT ["./hub"]
