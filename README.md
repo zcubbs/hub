@@ -42,7 +42,7 @@ docker run -d \
 helm install hub oci://ghcr.io/zcubbs/hub/hub -f /path/to/values.yaml
 ```
 
-see [values.yaml](chart/values.yaml) for the default values.
+see [values.yaml](charts/hub/values.yaml) for the default values.
 
 ## Configuration
 
