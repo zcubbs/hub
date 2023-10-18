@@ -6,6 +6,7 @@
   </div>
   <ul>
     <div class="container">
+      {{ if .Links }}
       <div class="sub-header"></div>
       <div class="container-section">
         {{range .Links}}
@@ -15,6 +16,7 @@
         </a>
         {{end}}
       </div>
+      {{ end }}
       <div class="container-section">
         {{if not .Groups}}
         <p>No links to show.</p>
