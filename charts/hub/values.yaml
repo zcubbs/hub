@@ -2,6 +2,8 @@ deployment:
   image: ghcr.io/zcubbs/hub
   tag: latest
   extraEnv: []
+service:
+  port: 8000
 config: |-
   links:
     - caption: Docs
