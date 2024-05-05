@@ -1,5 +1,5 @@
-# alpine:3.18.4
-FROM alpine@sha256:48d9183eb12a05c99bcc0bf44a003607b8e941e1d4f41f9ad12bdcc4b5672f86
+# alpine:3.19.1
+FROM alpine@sha256:c5b1261d6d3e43071626931fc004f70149baeba2c8ec672bd4f27761f8e1ad6b
 
 RUN mkdir app
 
